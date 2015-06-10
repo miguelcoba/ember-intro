@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>ember.js - Introduction</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="ember.js - Introduction">
+		<meta name="author" content="Miguel Cobá">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -41,21 +41,119 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
+					<h1>ember.js</h1>
+					<h3>Introduction</h3>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						<small>Created by <a href="http://miguel.leugim.com.mx">Miguel Cobá</a> / <a href="http://twitter.com/MiguelCobaMtz">@MiguelCobaMtz</a></small>
 					</p>
 				</section>
 
 				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
+					<h1>ember.js</h1>
+					<h3>A framework for creating ambitious web applications</h3>
+					<p><a href="http://emberjs.com">emberjs.com</a></p>
+					<p><a href="https://github.com/emberjs/ember.js">github.com/emberjs/ember.js</a></p>
 				</section>
 
-				<!-- Example of nested vertical slides -->
+				<section>
+					<section id="fragments">
+						<h1>Overview</h1>
+						<p class="fragment">Router</p>
+						<p class="fragment">Route</p>
+						<p class="fragment">Controller</p>
+						<p class="fragment">Template</p>
+						<p class="fragment">Model</p>
+					</section>
+					<section>
+						<h2>Router</h2>
+						<p>Translates URLs to a series of nested templates, each backed by a model</p>
+					</section>
+					<section>
+						<h2>Router</h2>
+						<p>Autogenerate several objects if not defined explicitly</p>
+						<ul>
+						<li class="fragment">Route</li>
+						<li class="fragment">Controller</li>
+						<li class="fragment">Views (that render templates)</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Router</h2>
+						<p>Define URL mapping</p>
+						<p class="fragment">Create required objects</p>
+						<p class="fragment">Delegate action to the Route object</p>
+					</section>
+					<section>
+						<h2>Router</h2>
+						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+App.Router.map(function() {
+	this.route('todos');
+});
+						</code></pre>
+					</section>
+					<section>
+						<h2>Route</h2>
+						<p>Is responsible of telling the template which model to display</p>
+						<p class="fragment">Binds a model to a controller</p>
+						<p class="fragment">Can have global event handlers</p>
+					</section>
+					<section>
+						<h2>Controller</h2>
+						<p>Grants access to model from template</p>
+						<p class="fragment">Templates are always connected to a controller</p>
+						<p class="fragment">Acts as a proxy for a model</p>
+						<p class="fragment">Decorates a model for presentation. e.g. formatting</p>
+						<p class="fragment">Holds application state. e.g. info we don't want to lose between page refresh</p>
+						<p class="fragment">Can have event handlers. e.g. button click</p>
+					</section>
+					<section>
+						<h2>Template</h2>
+						<p>Describe the user interface of the Application</p>
+						<p class="fragment">Automatically updates when the model changes</p>
+						<p class="fragment">Written in the <a href="http://www.handlebars.com">Handlebars</a> templating language</p>
+					</section>
+					<section>
+						<h2>Template</h2>
+						<p class="fragment">It can contain</p>
+						<ul>
+							<li class="fragment">Expressions (takes info from a model and place it into html)
+								<p><pre><code>{{firstName}}</code></pre></p>
+							</li>
+							<li class="fragment">Outlets (placeholders for other templates)
+								<p><pre><code>{{outlet}}</code></pre></p>
+							</li>
+							<li class="fragment">Components (customized fragments of UI that can be reused)
+								<p><pre><code>{{date-picker}}</code></pre></p>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Model</h2>
+						<p>Object representation of the data in the application</p>
+						<p class="fragment">Stores persistent data</p>
+						<p class="fragment">A model doesn't know which controller(s) will use it</p>
+					</section>
+					<section>
+						<h2>Model</h2>
+						<p class="fragment">It can be</p>
+						<ul>
+							<li class="fragment">Javascript objects</li>
+							<li class="fragment">Ember objects</li>
+							<li class="fragment">Ember Data objects</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h1>Ember Starter Kit</h1>
+					<p><a href="https://github.com/emberjs/starter-kit">github.com/emberjs/starter-kit</a></p>
+				</section>
+
+				<section>
+					<h1>Ember Inspector</h1>
+					<p>Search for "Ember Inspector" in Google Chrome Store</p>
+				</section>
+
 				<section>
 					<section>
 						<h2>Vertical Slides</h2>
