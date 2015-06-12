@@ -88,7 +88,7 @@
 						<h2>Router</h2>
 						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
 App.Router.map(function() {
-	this.route('todos');
+  this.route('todos');
 });
 						</code></pre>
 					</section>
@@ -152,6 +152,7 @@ App.Router.map(function() {
 				<section>
 					<h1>Ember Inspector</h1>
 					<p>Search for "Ember Inspector" in Google Chrome Store</p>
+					<p class="fragment">Make sure you enable "Allow access to file URLs" checkbox on <em>Chrome -&gt; Settings -&gt; Extensions -&gt; Ember Inspector plugin</em> if you want to open Ember apps from your filesystem</p>
 				</section>
 
 				<section>
@@ -209,7 +210,7 @@ subl index.html # or vim index.html
 &lt;/body&gt;
 &lt;/html&gt;
 					</code></pre>
-					<p>Delete the two scripts with type 'text/x-handelbars'</p>
+					<p>Delete the two scripts with type 'text/x-handlebars'</p>
 				</section>
 	
 				<section>
@@ -251,7 +252,7 @@ App.IndexRoute = Ember.Route.extend({
 						<p class="fragment">Yes, but not templates!</p>
 					</section>
 					<section>
-						<p>Ember.js create a default route, even if we don't define any mapping</p>
+						<p>Ember.js creates a default route, even if we don't define any mapping</p>
 						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
 // default route created by app
 App.Router.map( function() {
@@ -302,7 +303,6 @@ App.Router.map(function() {
   this.route('register');
 });
 						</code></pre>
-						<p>Now the index template is rendered</p>
 					</section>
 				</section>
 
@@ -511,13 +511,12 @@ App.AttendantsRoute = Ember.Route.extend({
 				</section>
 
 				<section>
-					<section>
-						<h3>index.html</h3>
-						<h4>Create an index template</h4>
-						<pre><code class="html" data-trim contenteditable style="font-size: 18px;">
-						</code></pre>
-						<p>Now the index template is rendered</p>
-					</section>
+						<h1>Thank you!</h1>
+						<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+							<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+						</a>
+						<br />
+						<small>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</small>
 				</section>
 
 
