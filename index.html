@@ -254,11 +254,22 @@ App.IndexRoute = Ember.Route.extend({
 					<section>
 						<p>Ember.js creates a default route, even if we don't define any mapping</p>
 						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-// default route created by app
+// default route mapping created by app
 App.Router.map( function() {
    this.resource( 'index', { path: '/' } );
 });
+
+// Default Application Route created by app
+// It is entered when your app first boots up. 
+// It renders the application template.
+App.ApplicationRoute = Ember.Route.extend({});
+
+// Default Index Route created by app
+// It is the default route, and will render the index template when the
+// user visits / (unless / has been overridden by your own custom route).
+App.IndexRoute = Ember.Route.extend({});
 						</code></pre>
+						<p><span class="fragment highlight-red">None</span> of them need to be defined explicitly (unless you want). They are part of every Ember application</p>
 					</section>
 					<section>
 						<p>When accessing that path ('/'), ember.js autogenerates, if they don't exist:</p>
