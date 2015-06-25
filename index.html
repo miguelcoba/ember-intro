@@ -49,6 +49,11 @@
 				</section>
 
 				<section>
+					<h3>Part 1</h3>
+					<h1>ember.js</h1>
+				</section>
+
+				<section>
 					<h1>ember.js</h1>
 					<h3>A framework for creating ambitious web applications</h3>
 					<p><a href="http://emberjs.com">emberjs.com</a></p>
@@ -56,7 +61,7 @@
 				</section>
 
 				<section>
-					<section id="fragments">
+					<section>
 						<h1>Overview</h1>
 						<p class="fragment">Router</p>
 						<p class="fragment">Route</p>
@@ -86,7 +91,7 @@
 					</section>
 					<section>
 						<h2>Router</h2>
-						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
 App.Router.map(function() {
   this.route('todos');
 });
@@ -168,16 +173,16 @@ App.Router.map(function() {
 
 				<section>
 					<h2>Create project</h2>
-					<pre><code class="bash" data-trim contenteditable style="font-size: 18px;">
-git clone https://github.com/emberjs/starter-kit.git conf-registry
-cd conf-registry
-subl index.html # or vim index.html
+					<pre><code class="bash" data-trim style="font-size: 18px;">
+$ git clone https://github.com/emberjs/starter-kit.git conf-registry
+$ cd conf-registry
+$ subl index.html # or vim index.html
 					</code></pre>
 				</section>
 
 				<section>
 					<h2>index.html</h2>
-					<pre><code class="html" data-trim contenteditable style="font-size: 18px;">
+					<pre><code class="html" data-trim style="font-size: 18px;">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -215,7 +220,7 @@ subl index.html # or vim index.html
 	
 				<section>
 					<h2>js/app.js</h2>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+					<pre><code class="javascript" data-trim style="font-size: 18px;">
 App = Ember.Application.create();
 
 App.Router.map(function() {
@@ -235,7 +240,7 @@ App.IndexRoute = Ember.Route.extend({
 					<section>
 						<h3>index.html</h3>
 						<h4>Create global application template</h4>
-						<pre><code class="handlebars" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="handlebars" data-trim style="font-size: 18px;">
 &lt;script type=&quot;text/x-handlebars&quot;&gt;
   &lt;h1&gt;Ember.js Conf 2015 registry&lt;/h1&gt;
 
@@ -253,7 +258,7 @@ App.IndexRoute = Ember.Route.extend({
 					</section>
 					<section>
 						<p>Ember.js creates a default route, even if we don't define any mapping</p>
-						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
 // default route mapping created by app
 App.Router.map( function() {
    this.resource( 'index', { path: '/' } );
@@ -285,7 +290,7 @@ App.IndexRoute = Ember.Route.extend({});
 					<section>
 						<h3>index.html</h3>
 						<h4>Create an index template</h4>
-						<pre><code class="handlebars" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="handlebars" data-trim style="font-size: 18px;">
 &lt;script type=&quot;text/x-handlebars&quot; id=&quot;index&quot;&gt;
   &lt;h2&gt;Welcome to the Ember.js Conf 2015&lt;/h2&gt;
 &lt;/script&gt;
@@ -308,7 +313,7 @@ App.IndexRoute = Ember.Route.extend({});
 					<section>
 						<h2>js/app.js</h2>
 						<p>Create a <em>Register</em> route</p>
-						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
 App.Router.map(function() {
   // put your routes here
   this.route('register');
@@ -319,7 +324,7 @@ App.Router.map(function() {
 					<section>
 						<h2>index.html</h2>
 						<p>Add link to register page in index template</p>
-						<pre><code class="handlebars" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="handlebars" data-trim style="font-size: 18px;">
 &lt;script type=&quot;text/x-handlebars&quot; id=&quot;index&quot;&gt;
   &lt;h2&gt;Welcome to the Ember.js Conf 2015&lt;/h2&gt;
 
@@ -332,7 +337,7 @@ App.Router.map(function() {
 					<section>
 						<h2>index.html</h2>
 						<p>Add a <em>register</em> template</p>
-						<pre><code class="handlebars" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="handlebars" data-trim style="font-size: 18px;">
 &lt;script type=&quot;text/x-handlebars&quot; id=&quot;register&quot;&gt;
   &lt;h3&gt;Please enter your info&lt;/h3&gt;
   &lt;label for='firstName'&gt;First Name&lt;/label&gt;
@@ -356,7 +361,7 @@ App.Router.map(function() {
 					<section>
 						<h2>js/app.js</h2>
 						<p>Create a <em>Register</em> Route to set the model for the template</p>
-						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
 App.RegisterRoute = Ember.Route.extend({
   model: function() {
     return { firstName: "", lastName: "", email: ""}
@@ -369,7 +374,7 @@ App.RegisterRoute = Ember.Route.extend({
 					<section>
 						<h2>index.html</h2>
 						<p>Bind the template to the model</p>
-						<pre><code class="handlebars" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="handlebars" data-trim style="font-size: 18px;">
 &lt;script type=&quot;text/x-handlebars&quot; id=&quot;register&quot;&gt;
   &lt;h3&gt;Please enter your info&lt;/h3&gt;
   &lt;label for='firstName'&gt;First Name&lt;/label&gt;
@@ -387,7 +392,7 @@ App.RegisterRoute = Ember.Route.extend({
 					<section>
 						<h2>index.html</h2>
 						<p>Bind an action to the Register button</p>
-						<pre><code class="handlebars" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="handlebars" data-trim style="font-size: 18px;">
 &lt;script type=&quot;text/x-handlebars&quot; id=&quot;register&quot;&gt;
   &lt;h3&gt;Please enter your info&lt;/h3&gt;
   &lt;label for='firstName'&gt;First Name&lt;/label&gt;
@@ -407,7 +412,7 @@ App.RegisterRoute = Ember.Route.extend({
 					<section>
 						<h2>js/app.js</h2>
 						<p>Create a <em>Register</em> controller</p>
-						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
 App.RegisterController = Ember.Controller.extend({
   actions: {
     register: function() {
@@ -426,7 +431,7 @@ App.RegisterController = Ember.Controller.extend({
 					<section>
 						<h2>js/app.js</h2>
 						<p>Create the attendant list</p>
-						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
 App.attendants = [];
 						</code></pre>
 						<p>This is just a plain javascript array to hold the attendants</p>
@@ -448,7 +453,7 @@ App.attendants = [];
 					<section>
 						<h2>js/app.js</h2>
 						<p>Create an <em>Attendants</em> route</p>
-						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
 App.Router.map(function() {
   // put your routes here
   this.route('register');
@@ -460,7 +465,7 @@ App.Router.map(function() {
 					<section>
 						<h2>index.html</h2>
 						<p>Add link to attendants admin page in index template</p>
-						<pre><code class="handlebars" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="handlebars" data-trim style="font-size: 18px;">
 &lt;script type=&quot;text/x-handlebars&quot; id=&quot;index&quot;&gt;
   &lt;h2&gt;Welcome to the Ember.js Conf 2015&lt;/h2&gt;
 
@@ -478,7 +483,7 @@ App.Router.map(function() {
 					<section>
 						<h2>index.html</h2>
 						<p>Add an <em>attendants</em> template</p>
-						<pre><code class="handlebars" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="handlebars" data-trim style="font-size: 18px;">
 &lt;script type=&quot;text/x-handlebars&quot; id=&quot;attendants&quot;&gt;
   &lt;h2&gt;Ember.js Conference 2015 attendant list&lt;/h2&gt;
   &lt;ul&gt;
@@ -502,7 +507,7 @@ App.Router.map(function() {
 					<section>
 						<h2>js/app.js</h2>
 						<p>Create an <em>Attendants</em> Route to set the model for the template</p>
-						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
 App.AttendantsRoute = Ember.Route.extend({
   model: function() {
     return App.attendants;
@@ -527,7 +532,7 @@ App.AttendantsRoute = Ember.Route.extend({
 					<section>
 						<h2>js/app.js</h2>
 						<p>Create an <em>About</em> route</p>
-						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
 App.Router.map(function() {
   // put your routes here
   this.route('register');
@@ -543,7 +548,7 @@ App.Router.map(function() {
 					<section>
 						<h2>index.html</h2>
 						<p>Add an outlet to show the <em>about</em> template inside the <em>attendants</em> template</p>
-						<pre><code class="handlebars" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="handlebars" data-trim style="font-size: 18px;">
 &lt;script type=&quot;text/x-handlebars&quot; id=&quot;attendants&quot;&gt;
   &lt;h2&gt;Ember.js Conference 2015 attendant list&lt;/h2&gt;
   &lt;ul&gt;
@@ -565,7 +570,7 @@ App.Router.map(function() {
 					<section>
 						<h2>index.html</h2>
 						<p>Add a link to transition to the attendants' about route</p>
-						<pre><code class="handlebars" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="handlebars" data-trim style="font-size: 18px;">
 &lt;script type=&quot;text/x-handlebars&quot; id=&quot;attendants&quot;&gt;
   &lt;h2&gt;Ember.js Conference 2015 attendant list&lt;/h2&gt;
   &lt;ul&gt;
@@ -587,7 +592,7 @@ App.Router.map(function() {
 					<section>
 						<h2>index.html</h2>
 						<p>Add an <em>attendants/about</em> template</p>
-						<pre><code class="handlebars" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="handlebars" data-trim style="font-size: 18px;">
 &lt;script type=&quot;text/x-handlebars&quot; id=&quot;attendants/about&quot;&gt;
   &lt;h3&gt;Ember.js Conference 2015 attendant details&lt;/h3&gt;
 
@@ -605,7 +610,7 @@ App.Router.map(function() {
 					<section>
 						<h2>js/app.js</h2>
 						<p>Create an <em>AttendantsAbout</em> Route to set the model for the template</p>
-						<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
 App.AttendantsAboutRoute = Ember.Route.extend({
   model: function(params) {
     return App.attendants.findBy('id', params.attendant_id);
@@ -622,7 +627,7 @@ App.AttendantsAboutRoute = Ember.Route.extend({
 				</section>
 
 				<section>
-					<h2>Summary</h2>
+					<h2>Ember.js Summary</h2>
 					<ul>
 						<li class="fragment">Open Source client-side Javascript web application framework</li>
 						<li class="fragment">Based on the Model View Controller pattern</li>
@@ -632,6 +637,173 @@ App.AttendantsAboutRoute = Ember.Route.extend({
 						<li class="fragment">Automatically-updating templates</li>
 						<li class="fragment">Powerful router for managing application state</li>
 					</ul>
+				</section>
+
+				<section>
+					<h3>Part 2</h3>
+					<h1>Ember Data</h1>
+				</section>
+
+				<section>
+					<h1>Ember Data</h1>
+					<h3>A data persistence library for Ember.js</h3>
+					<p><a href="https://github.com/emberjs/data">https://github.com/emberjs/data</a></p>
+				</section>
+
+				<section>
+					<section>
+						<h1>Overview</h1>
+						<p class="fragment">Library for robustly managing model data</p>
+						<p class="fragment">Agnostic to the underlying persistence mechanism</p>
+						<p class="fragment">Provides many of the facilities of an ORM</p>
+						<p class="fragment">Uses Promises/A+ for loading/saving records</p>
+					</section>
+				</section>
+	
+				<section>
+					<h1>Old, manual way</h1>
+					<p class="fragment">Asynchronous requests</p>
+				</section>
+
+				<section>
+					<section>
+						<h1>Attendants REST API</h1>
+						<p class="fragment">Will be our attendants persistence layer</p>
+						<p class="fragment">Very simple REST API build with node.js and express.js</p>
+					</section>
+					<section>
+						<h2>server/package.json</h2>
+						<pre><code class="json" data-trim style="font-size: 18px;">
+{
+  "name": "express-api",
+  "description": "Simple Express REST API server",
+  "private" : true,
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "3.x",
+    "cors": "2.7.x"
+  },
+  "main" : "server"
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Install node packages</h2>
+						<pre><code class="bash" data-trim style="font-size: 18px;">
+$ cd server
+$ npm install
+						</code></pre>
+					</section>
+					<section>
+						<h2>Run API server</h2>
+						<pre><code class="bash" data-trim style="font-size: 18px;">
+$ node server.js
+listening on port 3000
+						</code></pre>
+					</section>
+					<section>
+						<h3>Navigate to</h3>
+						<p>http://localhost:3000/attendants</p>
+						<pre><code class="bash" data-trim style="font-size: 18px;">
+$ curl http://localhost:3000/attendants
+[
+  {
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@example.com"
+  },
+  {
+    "id": 2,
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "email": "jane.doe@example.com"
+  }
+]
+						</code></pre>
+					</section>
+					<section>
+						<h3>Navigate to</h3>
+						<p>http://localhost:3000/attendants/1</p>
+						<pre><code class="bash" data-trim style="font-size: 18px;">
+$ curl http://localhost:3000/attendants/1
+{
+  "id": 1,
+  "firstName": "John",
+  "lastName": "Smith",
+  "email": "john.smith@example.com"
+}
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Modify Conference Registration App</h1>
+					</section>
+					<section>
+						<h2>js/app.js</h2>
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
+App.attendants = [];
+						</code></pre>
+						<p>Delete the App.attendants array</p>
+					</section>
+					<section>
+						<h2>js/app.js</h2>
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
+App.AttendantsRoute = Ember.Route.extend({
+  model: function() {
+    return Ember.$.getJSON('http://localhost:3000/attendants');
+  }
+});
+						</code></pre>
+						<p class="fragment">AttendantsRoute now get its model from REST API</p>
+						<p class="fragment">Ember.$.getJSON() does an asynchronous GET request and returns a promise</p>
+						<p class="fragment">When the promise resolves, Ember refreshes the template and shows the attendants list</p>
+						<p class="fragment">Go to index.html#/attendants URL</p>
+					</section>
+					<section>
+						<h2>js/app.js</h2>
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
+App.AttendantsAboutRoute = Ember.Route.extend({
+  model: function(params) {
+    return Ember.$.getJSON('http://localhost:3000/attendants/' + params.attendant_id);
+  }
+});
+						</code></pre>
+						<p class="fragment">AttendantsAboutRoute now get its model from REST API, too</p>
+						<p class="fragment">When the promise resolves, Ember can refresh the <em>about</em> template with the data returned from API server</p>
+						<p class="fragment">Go to index.html#/attendants/1/about URL</p>
+					</section>
+					<section>
+						<h2>js/app.js</h2>
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
+App.RegisterRoute = Ember.Route.extend({
+  model: function() {
+    return { firstName: "", lastName: "", email: ""}
+  }
+});
+						</code></pre>
+						<p class="fragment">Remove the id property from RegisterRoute model</p>
+						<p class="fragment">This will be assigned by the REST API when saving the new attendant</p>
+						<p class="fragment">Go to index.html#/register URL</p>
+					</section>
+					<section>
+						<h2>js/app.js</h2>
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
+register: function() {
+  var newAttendant = Ember.copy(this.get('model'));
+  var self = this;
+
+  Ember.$.post('http://localhost:3000/attendants', newAttendant).then(function(data) {
+    self.transitionToRoute('index');
+  });
+}
+						</code></pre>
+						<p class="fragment">Change the <em>register</em> action so that now saves to the API server</p>
+						<p class="fragment">This will be assigned by the REST API when saving the new attendant</p>
+						<p class="fragment">You can now submit the register form and save the data to the API rest</p>
+					</section>
 				</section>
 
 				<section>
