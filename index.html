@@ -651,13 +651,11 @@ App.AttendantsAboutRoute = Ember.Route.extend({
 				</section>
 
 				<section>
-					<section>
-						<h1>Overview</h1>
-						<p class="fragment">Library for robustly managing model data</p>
-						<p class="fragment">Agnostic to the underlying persistence mechanism</p>
-						<p class="fragment">Provides many of the facilities of an ORM</p>
-						<p class="fragment">Uses Promises/A+ for loading/saving records</p>
-					</section>
+					<h1>Overview</h1>
+					<p class="fragment">Library for robustly managing model data</p>
+					<p class="fragment">Agnostic to the underlying persistence mechanism</p>
+					<p class="fragment">Provides many of the facilities of an ORM</p>
+					<p class="fragment">Uses Promises/A+ for loading/saving records</p>
 				</section>
 	
 				<section>
@@ -804,6 +802,192 @@ register: function() {
 						<p class="fragment">This will be assigned by the REST API when saving the new attendant</p>
 						<p class="fragment">You can now submit the register form and save the data to the API rest</p>
 					</section>
+				</section>
+
+				<section>
+					<h1>Ember Data way</h1>
+				</section>
+
+				<section>
+					<section>
+						<h1>Add Ember Data to Conference Registration App</h1>
+					</section>
+					<section>
+						<h2>index.html</h2>
+						<pre><code class="html" data-trim style="font-size: 18px;">
+&lt;script src=&quot;js/libs/jquery-1.10.2.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://builds.emberjs.com/tags/v1.12.1/ember-template-compiler.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://builds.emberjs.com/tags/v1.12.1/ember.debug.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://builds.emberjs.com/tags/v1.0.0-beta.19.2/ember-data.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
+						</code></pre>
+						<p class="fragment">Modify script tags to use Ember 1.12.1</p>
+						<p class="fragment">Add script tag to use Ember Data v1.0.0-beta.19.2</p>
+						<p class="fragment">Get them from <a href="http://emberjs.com/builds/#/tagged">Ember Tagged Builds</a></p>
+					</section>
+					<section>
+						<h2>js/app.js</h2>
+						<p>Specify Adapter to use</p>
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
+App.ApplicationAdapter = DS.RESTAdapter.extend({
+  host: 'http://localhost:3000'
+});
+						</code></pre>
+						<p class="fragment">DS is an object exported by Ember Data</p>
+						<p class="fragment">Specify a REST adapter</p>
+						<p class="fragment">Configure the host it will comunicate with</p>
+					</section>
+					<section>
+						<h2>js/app.js</h2>
+						<p>Create a Ember Data model</p>
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
+App.Attendant = DS.Model.extend({
+  firstName: DS.attr(), // default type: string
+  lastName: DS.attr(),
+  email: DS.attr()
+});
+						</code></pre>
+						<p class="fragment">Extend DS.Model and specify the attributes of the model</p>
+						<p class="fragment">The default adapter supports attribute types of string, number, boolean, and date</p>
+						<p class="fragment">Default type for attribute is string</p>
+					</section>
+					<section>
+						<h2>js/app.js</h2>
+						<p>Use the <em>store</em> to access the REST API server</p>
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
+App.AttendantsRoute = Ember.Route.extend({
+  model: function() {
+    return this.store.find('attendant');
+  }
+});
+						</code></pre>
+						<p class="fragment">Ember Data adds a <em>store</em> property to all of the routes and controllers in the application</p>
+						<p class="fragment">This property is an instance of DS.Store that will be shared across all of the routes and controllers in the app</p>
+					</section>
+					<section>
+						<p>The DS.RESTAdapter expects the attendants response to be in format:</p>
+						<pre><code class="json" data-trim style="font-size: 18px;">
+{
+  "attendants": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Smith",
+      "email": "john.smith@example.com"
+    },
+    {
+      "id": 2,
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "email": "jane.doe@example.com"
+    }
+  ]
+}
+						</code></pre>
+						<p class="fragment">Each list of objects should be named as the model it contains</p>
+					</section>
+					<section>
+						<h2>server/server.js</h2>
+						<p>Change the format of the server's response for /attendants</p>
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
+app.get('/attendants', function(req, res) {
+  res.json({ attendants: attendants });
+});
+						</code></pre>
+						<p class="fragment">Go to index.html#/attendants URL</p>
+					</section>
+					<section>
+						<h2>js/app.js</h2>
+						<p>Modify AttendantsAboutRoute to use the store</p>
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
+App.AttendantsAboutRoute = Ember.Route.extend({
+  model: function(params) {
+    return this.store.find('attendant', params.attendant_id);
+  }
+});
+						</code></pre>
+					</section>
+					<section>
+						<h2>server/server.js</h2>
+						<p>Change the format of the server's response for /attendants/:id</p>
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
+app.get('/attendants/:id', function(req, res) {
+  if (req.params.id < 0 || req.params.id > attendants.length) {
+    res.statusCode = 404;
+    return res.send('Error 404: No attendant found');
+  }
+
+  var q = attendants[req.params.id - 1];
+  res.json({ attendant: q });
+});
+						</code></pre>
+						<p class="fragment">Go to index.html#/attendants/1/about URL</p>
+					</section>
+					<section>
+						<h2>js/app.js</h2>
+						<p>Modify the <em>register</em> action of Register controller to use the store</p>
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
+register: function() {
+  var newAttendant = this.store.createRecord('attendant', {
+    firstName: this.get('model.firstName'),
+    lastName: this.get('model.lastName'),
+    email: this.get('model.email'),
+  });
+  var self = this;
+
+  newAttendant.save().then(function(data) {  // save() triggers a POST request 
+    self.transitionToRoute('index');
+  });
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Saving objects to the <em>store</em></h2>
+						<p class="fragment">We create a new object directly in the store</p>
+						<p class="fragment">We specify the type of record and the values for its attributes</p>
+						<p class="fragment">It <span class="fragment highlight-red">only</span> exists on the store until we save it explicitly</p>
+						<p class="fragment">The save() method of the DS.Model, causes the RESTAdapter to trigger a POST to API server</p>
+						<p class="fragment">But RESTAdapter uses a JSON request, <span class="fragment highlight-red">not</span> a HTTP request</p>
+					</section>
+					<section>
+						<h2>server/server.js</h2>
+						<p>Modify the server to handle a JSON request</p>
+						<pre><code class="javascript" data-trim style="font-size: 18px;">
+app.post('/attendants', function(req, res) {
+  var attendantPayload = req.body.attendant;
+  if (!attendantPayload || !attendantPayload.firstName || !attendantPayload.email) {
+    res.statusCode = 400;
+    return res.send('Error 400: First Name and email are required.');
+  }
+
+  var attendant = {
+    id: attendants.length + 1,
+    firstName : attendantPayload.firstName,
+    lastName : attendantPayload.lastName,
+    email : attendantPayload.email
+  };
+
+  attendants.push(attendant);
+  res.json({ attendant: attendant });
+});
+						</code></pre>
+						<p class="fragment">Now you can submit the <em>register</em> form</p>
+					</section>
+				</section>
+	
+				<section>
+					<h2>Ember Data integration done</h2>
+				</section>
+
+				<section>
+					<h2>Ember Data Summary</h2>
+					<ul>
+						<li class="fragment">The store is responsible for managing the lifecycle of the models</li>
+						<li class="fragment">An adapter is an object that knows how to translate requests from Ember Data into requests to your server</li>
+						<li class="fragment">A record is an instance of a model that contains data loaded from a server</li>
+						<li class="fragment">A serializer is responsible for turning a raw JSON payload returned from your server into a record object</li>
+						<li class="fragment">The store will automatically cache records. If a record had already been loaded, asking for it a second time will always return the same object instance</li>
+					</ul>
 				</section>
 
 				<section>
